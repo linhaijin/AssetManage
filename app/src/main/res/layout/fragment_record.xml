@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:textSize="@dimen/sp18"
+            android:textColor="@color/white"
             android:text="记录"/>
     </RelativeLayout>
     <LinearLayout
