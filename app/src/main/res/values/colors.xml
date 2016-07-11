@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blue">#00acff</color>
+    <color name="blue_s">#3d98d1</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_s">#80FFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#80000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="ce4007f">#e4007f</color>
+    <color name="black4c">#4c000000</color>
+    <color name="background">#bab8b8</color>
+    <color name="background1">#d6d0d0</color>
+    <color name="bfbebe">#bfbebe</color>
+    <color name="title_bar_nomal">#282828</color>
+    <color name="ce0e0e0">#e0e0e0</color>
+
+</resources>

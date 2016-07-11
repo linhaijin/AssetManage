@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">资产管理</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="main_tab_index">首页</string>
+    <string name="main_tab_record">记录</string>
+    <string name="scan_qr_code">扫描二维码</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="scan">扫描</string>
+    <string name="kindly_reminder">温馨提示</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+
+</resources>
