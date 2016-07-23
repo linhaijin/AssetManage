@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.cowry.assetmanage.R;
 import com.cowry.assetmanage.app.Resolution;
 import com.cowry.assetmanage.base.BaseActivity;
+import com.cowry.assetmanage.widgets.DateUtils;
+import com.cowry.assetmanage.widgets.PreferencesUtils;
+import com.cowry.assetmanage.widgets.ToastUtils;
 
 /**
  * Created by acer on 2016/6/27.
@@ -19,6 +23,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private EditText etName;
     private EditText etPwd;
     private LoginTask loginTask;
+    TextView tvSetting;
     @Override
     public int setLayout() {
         return R.layout.activity_login;
@@ -29,11 +34,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         btnLogin = (Button) findViewById(R.id.btnLogin);
         etName = (EditText) findViewById(R.id.etName);
         etPwd = (EditText) findViewById(R.id.etPwd);
+        tvSetting = (TextView) findViewById(R.id.tvSetting);
     }
 
     @Override
     public void setListener() {
         btnLogin.setOnClickListener(this);
+        tvSetting.setOnClickListener(this);
     }
 
     @Override
@@ -41,16 +48,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         ViewGroup.LayoutParams params  = btnLogin.getLayoutParams();
         params.width = (int) (Resolution.screenW*0.6);
         btnLogin.setLayoutParams(params);
+        etName.setSelection(5);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.btnLogin:
-                loginTask = new LoginTask();
-                loginTask.execute();
+                if (PreferencesUtils.getInstance().getBoolean("IS_ACTIVE",false)){
+                    loginTask = new LoginTask();
+                    loginTask.execute();
+                }else {
+                    ToastUtils.getInstance().showToast("设备未授权 请点击设置页面授权");
+                }
+
                 break;
             case R.id.tvSetting:
+                startActivity(new Intent(this,LoginSetActivity.class));
                 break;
         }
     }
@@ -89,7 +103,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 etPwd.setError("默认密码为12345");
                 return;
             }
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            startActivity(new Intent(LoginActivity.this,NewMainActivity.class));
             finish();
         }
 

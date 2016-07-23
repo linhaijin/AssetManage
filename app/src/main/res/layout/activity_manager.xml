@@ -5,14 +5,14 @@
               android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp48">
+        android:layout_height="@dimen/dp44">
         <include layout="@layout/layout_title">
 
         </include>
         <TextView
             android:id="@+id/tvDone"
-            android:layout_width="@dimen/dp48"
-            android:layout_height="@dimen/dp48"
+            android:layout_width="@dimen/dp44"
+            android:layout_height="@dimen/dp44"
             android:layout_alignParentRight="true"
             android:gravity="center"
             android:textColor="@color/white"
@@ -61,32 +61,51 @@
     <LinearLayout
         android:id="@+id/lyButtons"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp44">
+        android:layout_height="@dimen/dp44"
+        android:weightSum="4">
         <Button
-            android:id="@+id/btnAllocation"
+            android:id="@+id/btn1"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="资产调拨"/>
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
+            android:text="新增资产"/>
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/background"></View>
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
+            android:text="资产导出"/>
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/white_s"></View>
+            android:background="@color/background"></View>
         <Button
-            android:id="@+id/btnBorrow"
+            android:id="@+id/btn3"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:text="资产借还"/>
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
+            android:text="报表打印"/>
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/white_s"></View>
+            android:background="@color/background"></View>
         <Button
-            android:id="@+id/btnRepair"
+            android:id="@+id/btn4"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
             android:layout_height="match_parent"
-            android:text="资产送修"/>
+            android:text="资产删除"/>
     </LinearLayout>
 </LinearLayout>

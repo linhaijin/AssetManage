@@ -1,11 +1,12 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.NoTitleBar">
+    <style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
         <!-- Customize your theme here. -->
         <!--<item name="android:windowBackground">@mipmap/bg</item>-->
         <item name="android:clipToPadding">false</item>
         <item name="android:fitsSystemWindows">true</item>
+        <!--<item name="android:windowBackground">@mipmap/backgound</item>-->
     </style>
     <style name="Theme.Light.NoTitle.NoShadow.Dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>

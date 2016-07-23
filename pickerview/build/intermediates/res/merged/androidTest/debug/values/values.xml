@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/xuliangchun/Desktop/AssetManage/pickerview/build/intermediates/bundles/debug/res/values/values.xml -->
+    <!-- From: file:/C:/Users/acer/Desktop/AssetManage/pickerview/build/intermediates/bundles/debug/res/values/values.xml -->
     <eat-comment/>
     <bool name="pickerview_customTextSize">false</bool>
     <color name="bgColor_overlay">#60000000</color>

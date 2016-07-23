@@ -44,9 +44,29 @@
         android:layout_height="0dp"
         android:divider="@null"
         android:layout_weight="1"></ListView>
-    <Button
-        android:id="@+id/btnAdd"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp40"
-        android:text="新增任务"/>
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
+            android:text="新建任务"/>
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/background"></View>
+        <Button
+            android:id="@+id/btnIn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp40"
+            android:background="@drawable/btn_selector"
+            android:textColor="@color/white"
+            android:text="导入盘点表"/>
+    </LinearLayout>
+
 </LinearLayout>

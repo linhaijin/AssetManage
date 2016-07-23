@@ -29,7 +29,8 @@
             <com.cowry.assetmanage.widgets.SquareImage
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/index"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +47,8 @@
             <com.cowry.assetmanage.widgets.SquareImage
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/index"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +64,8 @@
             <com.cowry.assetmanage.widgets.SquareImage
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/index"/>
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_launcher"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
