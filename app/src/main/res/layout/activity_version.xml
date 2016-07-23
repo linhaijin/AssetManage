@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include layout="@layout/layout_title"></include>
+    <ImageView
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp100"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:src="@mipmap/ic_launcher"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_gravity="center_horizontal"
+        android:text="资产管理V1.0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp12"
+        android:lineSpacingExtra="@dimen/dp5"
+        android:text="资产管理系统Android客户端，是由合普创新（深圳）网络科技有限公司研发中心独立自主研发的自主知识产权的软件，基于PDA手持机开发配套的Android客户端，以实现资产信息便捷管理。"/>
+</LinearLayout>
