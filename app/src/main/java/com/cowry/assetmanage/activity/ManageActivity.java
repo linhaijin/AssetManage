@@ -1,6 +1,7 @@
 package com.cowry.assetmanage.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -21,6 +22,7 @@ import com.cowry.assetmanage.app.ACache;
 import com.cowry.assetmanage.base.BaseActivity;
 import com.cowry.assetmanage.bean.Bean;
 import com.cowry.assetmanage.widgets.ToastUtils;
+import com.cowry.assetmanage.widgets.UIAlertView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +37,15 @@ public class ManageActivity extends BaseActivity implements View.OnClickListener
     private EditText etSearch;
     private ImageView ivClearText;
     private ACache mCache;
-    private Button btnAllocation;
-    private Button btnBorrow;
-    private Button btnRepair;
+//    private Button btnAllocation;
+//    private Button btnBorrow;
+//    private Button btnRepair;
     private LinearLayout lyButtons;
     private TextView tvDone;
+    Button btn1;
+    Button btn2;
+    Button btn3;
+    Button btn4;
     @Override
     public int setLayout() {
         return R.layout.activity_manager;
@@ -51,16 +57,25 @@ public class ManageActivity extends BaseActivity implements View.OnClickListener
 
         etSearch = (EditText) findViewById(R.id.et_search);
         ivClearText = (ImageView) findViewById(R.id.ivClearText);
-        btnAllocation = (Button) findViewById(R.id.btnAllocation);
-        btnBorrow = (Button) findViewById(R.id.btnBorrow);
-        btnRepair = (Button) findViewById(R.id.btnRepair);
+//        btnAllocation = (Button) findViewById(R.id.btnAllocation);
+//        btnBorrow = (Button) findViewById(R.id.btnBorrow);
+//        btnRepair = (Button) findViewById(R.id.btnRepair);
         lyButtons = (LinearLayout) findViewById(R.id.lyButtons);
         tvDone = (TextView) findViewById(R.id.tvDone);
+
+        btn1 = (Button) findViewById(R.id.btn1);
+        btn2 = (Button) findViewById(R.id.btn2);
+        btn3 = (Button) findViewById(R.id.btn3);
+        btn4 = (Button) findViewById(R.id.btn4);
     }
 
     @Override
     public void setListener() {
         ivClearText.setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
         etSearch.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -93,9 +108,9 @@ public class ManageActivity extends BaseActivity implements View.OnClickListener
             }
 
         });
-        btnAllocation.setOnClickListener(this);
-        btnBorrow.setOnClickListener(this);
-        btnRepair.setOnClickListener(this);
+//        btnAllocation.setOnClickListener(this);
+//        btnBorrow.setOnClickListener(this);
+//        btnRepair.setOnClickListener(this);
         tvDone.setOnClickListener(this);
         lvSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -136,20 +151,11 @@ public class ManageActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent();
+
 
         switch (v.getId()){
             case R.id.ivClearText:
                 etSearch.setText("");
-                break;
-            case R.id.btnAllocation:
-                intent.setClass(this,AllocationActivity.class);
-                break;
-            case R.id.btnBorrow:
-                intent.setClass(this,BorrowActivity.class);
-                break;
-            case R.id.btnRepair:
-                intent.setClass(this,RepairActivity.class);
                 break;
             case R.id.tvDone:
                 StringBuilder str = new StringBuilder();
@@ -168,31 +174,51 @@ public class ManageActivity extends BaseActivity implements View.OnClickListener
 
                     }
                 }
-                intent.putExtra("data",str.toString());
-                setResult(RESULT_OK, intent);
+                Intent intent1 = new Intent();
+                intent1.putExtra("data",str.toString());
+                setResult(RESULT_OK,intent1);
                 finish();
                 break;
-
-        }
-        StringBuilder str = new StringBuilder();
-        if (v.getId()!= R.id.ivClearText&&v.getId()!= R.id.tvDone){
-            if (adapter.getSelectCount()<=0){
-                ToastUtils.getInstance().showToast("未选中任何项");
-                return;
-            }
-            for (int i=0;i<beans.size();i++){
-                if (adapter.getIsSelected().get(i)){
-                    if (TextUtils.isEmpty(str)){
-                        str.append(beans.get(i).getbId());
-                    }else {
-                        str.append(",");
-                        str.append(beans.get(i).getbId());
-                    }
-
+            case R.id.btn1:
+                Bundle bundle = new Bundle();
+                bundle.putString("number",beans.get(0).getbId());
+                bundle.putString("name",beans.get(0).getbName());
+                bundle.putString("brand",beans.get(0).getbBrand());
+                bundle.putString("status",beans.get(0).getbStatus());
+                Intent intent = new Intent(this,DetailActivity.class);
+                intent.putExtra("data", bundle);
+                startActivity(intent);
+                break;
+            case R.id.btn2:
+                startActivity(new Intent(this,AssetOutActivity.class));
+                break;
+            case R.id.btn3:
+                startActivity(new Intent(this,SelectPrinterActivity.class));
+                break;
+            case R.id.btn4:
+                final List<Bean> filterBeans = new ArrayList<>();
+                if (adapter.getSelectCount()<=0){
+                    ToastUtils.getInstance().showToast("未选中任何项");
+                    return;
                 }
-            }
-            intent.putExtra("data",str.toString());
-            startActivity(intent);
+                for (int i=0;i<beans.size();i++){
+                    if (adapter.getIsSelected().get(i)){
+                        filterBeans.add(beans.get(i));
+                    }
+                }
+                UIAlertView dialog = new UIAlertView(this,getString(R.string.kindly_reminder),"确认删除所选资产，删除后将无法恢复",
+                        getString(R.string.cancel),getString(R.string.confirm));
+                dialog.show();
+                dialog.setClicklistener(new UIAlertView.ClickListenerInterface() {
+                    @Override
+                    public void doRight() {
+                        beans.removeAll(filterBeans);
+                        adapter.refresh(beans);
+                        ToastUtils.getInstance().showToast("删除成功");
+                    }
+                });
+                break;
+
         }
     }
 }

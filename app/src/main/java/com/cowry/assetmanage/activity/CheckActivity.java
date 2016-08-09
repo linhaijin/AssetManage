@@ -30,6 +30,7 @@ public class CheckActivity extends BaseActivity {
     private ACache mCache;
     private CheckAdapter adapter;
     private Button btnAdd;
+    Button btnIn;
     @Override
     public int setLayout() {
         return R.layout.activity_check;
@@ -39,6 +40,7 @@ public class CheckActivity extends BaseActivity {
     public void findView() {
         lvCheck = (ListView) findViewById(R.id.lvCheck);
         btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnIn = (Button) findViewById(R.id.btnIn);
     }
 
     @Override
@@ -50,21 +52,27 @@ public class CheckActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(CheckActivity.this, CheckDeatailActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("number",checkBeans.get(position).getNumber());
+                bundle.putInt("number", checkBeans.get(position).getNumber());
                 bundle.putString("category", checkBeans.get(position).getCategory());
                 bundle.putString("date", checkBeans.get(position).getDate());
                 bundle.putString("status", checkBeans.get(position).getStatus());
-                bundle.putString("beans",checkBeans.get(position).getBeans());
+                bundle.putString("beans", checkBeans.get(position).getBeans());
                 intent.putExtra("data", bundle);
-                startActivityForResult(intent,REQUEST_CHECK_DETAIL);
+                startActivityForResult(intent, REQUEST_CHECK_DETAIL);
 
             }
         });
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CheckActivity.this,AddCheckActivity.class);
-                startActivityForResult(intent,REQUEST_ADD_CHECK);
+                Intent intent = new Intent(CheckActivity.this, AddCheckActivity.class);
+                startActivityForResult(intent, REQUEST_ADD_CHECK);
+            }
+        });
+        btnIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CheckActivity.this,InCheckActivity.class));
             }
         });
     }

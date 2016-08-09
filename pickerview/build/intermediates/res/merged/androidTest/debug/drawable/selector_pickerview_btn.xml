@@ -4,4 +4,4 @@
     <item android:state_pressed="true" android:color="@color/pickerview_timebtn_pre" />
     <item android:color="@color/pickerview_timebtn_nor" />
 </selector>
-<!-- From: file:/C:/Users/xuliangchun/Desktop/AssetManage/pickerview/src/main/res/drawable/selector_pickerview_btn.xml --><!-- From: file:/C:/Users/xuliangchun/Desktop/AssetManage/pickerview/build/intermediates/bundles/debug/res/drawable/selector_pickerview_btn.xml -->
+<!-- From: file:/C:/Users/acer/Desktop/AssetManage/pickerview/src/main/res/drawable/selector_pickerview_btn.xml --><!-- From: file:/C:/Users/acer/Desktop/AssetManage/pickerview/build/intermediates/bundles/debug/res/drawable/selector_pickerview_btn.xml -->
